@@ -24,6 +24,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            UserDomain:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Domain/User'
+                prefix: 'App\Domain\User'
+                alias: UserDomain
         controller_resolver:
             auto_mapping: false
 

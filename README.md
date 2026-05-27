@@ -48,8 +48,27 @@ This project is a Symfony-based API that models a vending machine and its state 
 
 The application will be accessible at: [http://localhost:8000](http://localhost:8000)
 
+### JWT Authentication
+
+The API is protected using JWT (JSON Web Token). Two roles are implemented: `ROLE_ADMIN` and `ROLE_TECH`.
+
+- **Login Endpoint:** `POST /api/login`
+- **Default Credentials:**
+  - **Administrator:** `admin@vending.com` / `admin123`
+  - **Technician:** `tech@vending.com` / `tech123`
+- **Role Hierarchy:** `ROLE_ADMIN` inherits all permissions from `ROLE_TECH`.
+- **How to use:**
+  1. Send a POST request to `/api/login` with the credentials.
+  2. Receive a `token` in the response.
+  3. Include this token in the `Authorization` header for subsequent requests:
+     `Authorization: Bearer <your_token>`
+
 ### Useful Commands
 
+- **Seed Initial Users:**
+  ```bash
+  docker-compose exec php bin/console app:seed-users
+  ```
 - **Run Tests:**
   ```bash
   docker-compose exec php bin/phpunit
