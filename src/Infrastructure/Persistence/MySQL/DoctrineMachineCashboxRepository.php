@@ -40,4 +40,28 @@ class DoctrineMachineCashboxRepository extends ServiceEntityRepository implement
 
         $em->flush();
     }
+
+    public function subtractCoins(array $coins): void
+    {
+        $em = $this->getEntityManager();
+
+        foreach ($coins as $value => $quantity) {
+            $denomination = CoinDenomination::tryFrom((int) $value);
+            if (!$denomination) {
+                continue;
+            }
+
+            $coinStock = $this->find($denomination);
+            if ($coinStock) {
+                $coinStock->subtractQuantity($quantity);
+            }
+        }
+
+        $em->flush();
+    }
+
+    public function findByDenomination(CoinDenomination $denomination): ?CoinStock
+    {
+        return $this->find($denomination);
+    }
 }
