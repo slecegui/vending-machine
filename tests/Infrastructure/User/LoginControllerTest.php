@@ -17,8 +17,8 @@ class LoginControllerTest extends WebTestCase
             [],
             ['CONTENT_TYPE' => 'application/json'],
             json_encode([
-                'email' => 'admin@vending.com',
-                'password' => 'admin123',
+                'email' => 'tech@vending.com',
+                'password' => 'tech123',
             ])
         );
 
@@ -38,7 +38,7 @@ class LoginControllerTest extends WebTestCase
             [],
             ['CONTENT_TYPE' => 'application/json'],
             json_encode([
-                'email' => 'admin@vending.com',
+                'email' => 'tech@vending.com',
                 'password' => 'wrong_password',
             ])
         );
