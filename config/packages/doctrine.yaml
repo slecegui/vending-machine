@@ -30,6 +30,18 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Domain/User'
                 prefix: 'App\Domain\User'
                 alias: UserDomain
+            InventoryDomain:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Domain/Inventory'
+                prefix: 'App\Domain\Inventory'
+                alias: InventoryDomain
+            CashboxDomain:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Domain/Cashbox'
+                prefix: 'App\Domain\Cashbox'
+                alias: CashboxDomain
         controller_resolver:
             auto_mapping: false
 
