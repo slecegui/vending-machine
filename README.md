@@ -62,6 +62,10 @@ The application will be accessible at: [http://localhost:8000](http://localhost:
   ```bash
   docker-compose exec php bin/phpunit
   ```
+
+## API Testing
+You can use the provided Postman collection located in `docs/postman/VendingMachine.postman_collection.json` to test the API endpoints.
+
 - **Symfony Console:**
   ```bash
   docker-compose exec php bin/console <command>

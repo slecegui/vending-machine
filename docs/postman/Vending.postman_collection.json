@@ -1,0 +1,437 @@
+{
+  "info": {
+    "_postman_id": "66b36288-ad37-42b1-a425-36d03a6dd7ed",
+    "name": "Vending",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55122825",
+    "_collection_link": "https://go.postman.co/collection/55122825-66b36288-ad37-42b1-a425-36d03a6dd7ed?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "login_check",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"tech@vending.com\",\n  \"password\": \"tech123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post_add_stock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <TU_TOKEN>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n     \"products\": {\r\n       \"WATER\": {\"stock\": 5, \"price\": 65},\r\n       \"JUICE\": {\"stock\": 5, \"price\": 100},\r\n       \"SODA\": {\"stock\": 5, \"price\": 125}\r\n     },\r\n     \"coins\": {\r\n       \"5\": 10,\r\n       \"10\": 50,\r\n       \"25\": 20,\r\n       \"100\": 5\r\n     }\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/service",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "service"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:8000/api/service \\\r\n   -H \"Authorization: Bearer <TU_TOKEN>\" \\\r\n   -H \"Content-Type: application/json\" \\\r\n   -d '{\r\n     \"products\": {\r\n       \"WATER\": 20,\r\n       \"JUICE\": 10,\r\n       \"SODA\": 5\r\n     },\r\n     \"coins\": {\r\n       \"5\": 100,\r\n       \"10\": 50,\r\n       \"25\": 40,\r\n       \"100\": 10\r\n     }\r\n   }'"
+      },
+      "response": []
+    },
+    {
+      "name": "get_stock",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <TU_TOKEN>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/service",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "service"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:8000/api/service \\\r\n   -H \"Authorization: Bearer <TU_TOKEN>\" \\\r\n   -H \"Content-Type: application/json\" \\\r\n   -d '{\r\n     \"products\": {\r\n       \"WATER\": 20,\r\n       \"JUICE\": 10,\r\n       \"SODA\": 5\r\n     },\r\n     \"coins\": {\r\n       \"5\": 100,\r\n       \"10\": 50,\r\n       \"25\": 40,\r\n       \"100\": 10\r\n     }\r\n   }'"
+      },
+      "response": []
+    },
+    {
+      "name": "get_escrow",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <TU_TOKEN>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/service",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "service"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:8000/api/service \\\r\n   -H \"Authorization: Bearer <TU_TOKEN>\" \\\r\n   -H \"Content-Type: application/json\" \\\r\n   -d '{\r\n     \"products\": {\r\n       \"WATER\": 20,\r\n       \"JUICE\": 10,\r\n       \"SODA\": 5\r\n     },\r\n     \"coins\": {\r\n       \"5\": 100,\r\n       \"10\": 50,\r\n       \"25\": 40,\r\n       \"100\": 10\r\n     }\r\n   }'"
+      },
+      "response": []
+    },
+    {
+      "name": "inter coin 100",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"coin\": 100}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/coins",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "coins"
+          ]
+        },
+        "description": "Generated from cURL:  curl -X POST http://localhost:8000/api/coins \\\r\n   2      -H \"Content-Type: application/json\" \\\r\n   3      -d '{\"coin\": 100}'"
+      },
+      "response": []
+    },
+    {
+      "name": "inter coin 5",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"coin\": 5}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/coins",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "coins"
+          ]
+        },
+        "description": "Generated from cURL:  curl -X POST http://localhost:8000/api/coins \\\r\n   2      -H \"Content-Type: application/json\" \\\r\n   3      -d '{\"coin\": 100}'"
+      },
+      "response": []
+    },
+    {
+      "name": "inter coin 10",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"coin\": 10}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/coins",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "coins"
+          ]
+        },
+        "description": "Generated from cURL:  curl -X POST http://localhost:8000/api/coins \\\r\n   2      -H \"Content-Type: application/json\" \\\r\n   3      -d '{\"coin\": 100}'"
+      },
+      "response": []
+    },
+    {
+      "name": "inter coin 25",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"coin\": 25}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/coins",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "coins"
+          ]
+        },
+        "description": "Generated from cURL:  curl -X POST http://localhost:8000/api/coins \\\r\n   2      -H \"Content-Type: application/json\" \\\r\n   3      -d '{\"coin\": 100}'"
+      },
+      "response": []
+    },
+    {
+      "name": "buy_water",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"product\": \"WATER\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/buy",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "buy"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:8000/api/buy \\\r\n   2      -H \"Content-Type: application/json\" \\\r\n   3      -d '{\"product\": \"WATER\"}'"
+      },
+      "response": []
+    },
+    {
+      "name": "refund",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/refund",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "refund"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST http://localhost:8000/api/refund \\\r\n   2      -H \"Content-Type: application/json\""
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearer_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Verificamos si la respuesta de nuestra petición principal fue 401\r",
+          "if (pm.response.code === 401) {\r",
+          "    console.log(\"Detectado error 401. Solicitando nuevo token...\");\r",
+          "\r",
+          "    // Configuramos la petición interna de Postman hacia el endpoint de login\r",
+          "    const loginRequest = {\r",
+          "        url: pm.collectionVariables.get(\"base_url\") + '/api/login',\r",
+          "        method: 'POST',\r",
+          "        header: 'Content-Type: application/json',\r",
+          "        body: {\r",
+          "            mode: 'raw',\r",
+          "            raw: JSON.stringify({\r",
+          "                username: \"tech@vending.com\",\r",
+          "                password: \"tech123\"\r",
+          "            })\r",
+          "        }\r",
+          "    };\r",
+          "\r",
+          "    // Enviamos la petición en segundo plano\r",
+          "    pm.sendRequest(loginRequest, function (error, response) {\r",
+          "        if (error) {\r",
+          "            console.error(\"Error al intentar hacer login automático:\", error);\r",
+          "        } else {\r",
+          "            // Analizamos la respuesta del login\r",
+          "            const jsonResponse = response.json();\r",
+          "            \r",
+          "            // LexikJWTAuthenticationBundle suele devolver el token en la clave \"token\"\r",
+          "            if (jsonResponse.token) {\r",
+          "                // Guardamos el nuevo token en la variable de la colección\r",
+          "                pm.collectionVariables.set(\"bearer_token\", jsonResponse.token);\r",
+          "                console.log(\"¡Token actualizado con éxito! Vuelve a enviar tu petición.\");\r",
+          "            } else {\r",
+          "                console.error(\"El login respondió, pero no se encontró el token en el JSON.\");\r",
+          "            }\r",
+          "        }\r",
+          "    });\r",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "bearer_token",
+      "value": ""
+    }
+  ]
+}
