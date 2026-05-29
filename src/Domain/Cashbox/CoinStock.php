@@ -38,4 +38,17 @@ class CoinStock
         }
         $this->quantity += $quantity;
     }
+
+    public function subtractQuantity(int $quantity): void
+    {
+        if ($quantity < 0) {
+            throw new \InvalidArgumentException('Quantity to subtract cannot be negative.');
+        }
+        
+        if ($this->quantity < $quantity) {
+            throw new \DomainException('Not enough coins in stock to subtract.');
+        }
+        
+        $this->quantity -= $quantity;
+    }
 }

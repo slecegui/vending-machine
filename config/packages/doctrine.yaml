@@ -42,6 +42,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Domain/Cashbox'
                 prefix: 'App\Domain\Cashbox'
                 alias: CashboxDomain
+            SalesDomain:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Domain/Sales'
+                prefix: 'App\Domain\Sales'
+                alias: SalesDomain
         controller_resolver:
             auto_mapping: false
 

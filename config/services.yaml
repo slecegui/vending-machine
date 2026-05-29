@@ -28,5 +28,11 @@ services:
     App\Domain\Cashbox\MachineCashboxRepositoryInterface:
         alias: App\Infrastructure\Persistence\MySQL\DoctrineMachineCashboxRepository
 
+    App\Domain\Sales\SaleRepositoryInterface:
+        alias: App\Infrastructure\Persistence\MySQL\DoctrineSaleRepository
+
+    App\Domain\Cashbox\EscrowRepositoryInterface:
+        alias: App\Infrastructure\Persistence\MySQL\DoctrineEscrowRepository
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
