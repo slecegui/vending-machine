@@ -30,7 +30,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    public function __construct(string $email, string $password, array $roles = ['ROLE_ADMIN'])
+    public function __construct(string $email, string $password, array $roles = ['ROLE_TECHNICIAN'])
     {
         $this->email = $email;
         $this->password = $password;

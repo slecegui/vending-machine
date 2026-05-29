@@ -24,15 +24,9 @@ class CreateUserCommand extends Command
     {
         $usersToCreate = [
             [
-                'email' => 'admin@vending.com',
-                'password' => 'admin123',
-                'roles' => ['ROLE_ADMIN'],
-                'label' => 'Administrator'
-            ],
-            [
                 'email' => 'tech@vending.com',
                 'password' => 'tech123',
-                'roles' => ['ROLE_TECH'],
+                'roles' => ['ROLE_TECHNICIAN'],
                 'label' => 'Technician'
             ],
         ];
