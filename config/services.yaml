@@ -20,7 +20,13 @@ services:
         resource: '../src/'
 
     App\Domain\User\UserRepositoryInterface:
-        alias: App\Infrastructure\Persistence\MySQL\DoctrineUserRepository
+        alias: App\Infrastructure\User\DoctrineUserRepository
+
+    App\Domain\Inventory\ProductRepositoryInterface:
+        alias: App\Infrastructure\Persistence\MySQL\DoctrineProductRepository
+
+    App\Domain\Cashbox\MachineCashboxRepositoryInterface:
+        alias: App\Infrastructure\Persistence\MySQL\DoctrineMachineCashboxRepository
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

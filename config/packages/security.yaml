@@ -4,7 +4,8 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
 
     role_hierarchy:
-        ROLE_TECHNICIAN: ROLE_USER
+        ROLE_TECHNICIAN: [ROLE_USER, ROLE_TECH]
+        ROLE_TECH: ROLE_TECHNICIAN
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
