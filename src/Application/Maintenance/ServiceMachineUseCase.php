@@ -49,7 +49,7 @@ class ServiceMachineUseCase
                     $product->addStock((int)$data['stock']);
                 }
                 if (isset($data['price'])) {
-                    $product->setPrice((int)$data['price']);
+                    $product->setPrice((int)round($data['price'] * 100));
                 }
             } else {
                 // Backward compatibility for simple quantity input

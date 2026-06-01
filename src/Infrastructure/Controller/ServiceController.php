@@ -34,7 +34,7 @@ class ServiceController extends AbstractController
         foreach ($products as $product) {
             $productsData[$product->getType()->value] = [
                 'stock' => $product->getStock(),
-                'price' => $product->getPrice()
+                'price' => number_format($product->getPrice() / 100, 2, '.', '')
             ];
         }
 
