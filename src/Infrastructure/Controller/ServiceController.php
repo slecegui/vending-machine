@@ -34,13 +34,14 @@ class ServiceController extends AbstractController
         foreach ($products as $product) {
             $productsData[$product->getType()->value] = [
                 'stock' => $product->getStock(),
-                'price' => $product->getPrice()
+                'price' => number_format($product->getPrice() / 100, 2, '.', '')
             ];
         }
 
         $coinsData = [];
         foreach ($coins as $coinStock) {
-            $coinsData[$coinStock->getDenomination()->value] = $coinStock->getQuantity();
+            $decimalValue = number_format($coinStock->getDenomination()->value / 100, 2, '.', '');
+            $coinsData[$decimalValue] = $coinStock->getQuantity();
         }
 
         return new JsonResponse([
@@ -59,7 +60,23 @@ class ServiceController extends AbstractController
         }
 
         $productsStock = $data['products'] ?? [];
-        $coins = $data['coins'] ?? [];
+        $coinsInput = $data['coins'] ?? [];
+
+        $coins = [];
+        $map = [
+            '0.05' => 5,
+            '0.10' => 10,
+            '0.25' => 25,
+            '1.00' => 100,
+        ];
+
+        foreach ($coinsInput as $denomination => $quantity) {
+            $key = number_format((float) $denomination, 2, '.', '');
+            if (!isset($map[$key])) {
+                return new JsonResponse(['error' => 'Invalid coin denomination: ' . $denomination], Response::HTTP_BAD_REQUEST);
+            }
+            $coins[$map[$key]] = (int) $quantity;
+        }
 
         if (empty($productsStock) && empty($coins)) {
             return new JsonResponse(['error' => 'No maintenance data provided'], Response::HTTP_BAD_REQUEST);
