@@ -159,7 +159,7 @@
       "response": []
     },
     {
-      "name": "inter coin 100",
+      "name": "inter coin 1.00",
       "request": {
         "auth": {
           "type": "noauth"
@@ -173,7 +173,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"coin\": 100}",
+          "raw": "{\"coin\": 1.00}",
           "options": {
             "raw": {
               "language": "json"
@@ -195,7 +195,7 @@
       "response": []
     },
     {
-      "name": "inter coin 5",
+      "name": "inter coin 0.05",
       "request": {
         "method": "POST",
         "header": [
@@ -206,7 +206,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"coin\": 5}",
+          "raw": "{\"coin\": 0.05}",
           "options": {
             "raw": {
               "language": "json"
@@ -228,7 +228,7 @@
       "response": []
     },
     {
-      "name": "inter coin 10",
+      "name": "inter coin 0.10",
       "request": {
         "method": "POST",
         "header": [
@@ -239,7 +239,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"coin\": 10}",
+          "raw": "{\"coin\": 0.10}",
           "options": {
             "raw": {
               "language": "json"
@@ -261,7 +261,7 @@
       "response": []
     },
     {
-      "name": "inter coin 25",
+      "name": "inter coin 0.25",
       "request": {
         "method": "POST",
         "header": [
@@ -272,7 +272,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\"coin\": 25}",
+          "raw": "{\"coin\": 0.25}",
           "options": {
             "raw": {
               "language": "json"
