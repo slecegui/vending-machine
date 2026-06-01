@@ -24,20 +24,34 @@ class PurchaseController extends AbstractController
     #[Route('/coins', name: 'api_purchase_get_credit', methods: ['GET'])]
     public function getCredit(GetEscrowCreditUseCase $useCase): JsonResponse
     {
-        return new JsonResponse(['current_credit' => $useCase->execute()]);
+        return new JsonResponse(['current_credit' => number_format($useCase->execute() / 100, 2, '.', '')]);
     }
 
     #[Route('/coins', name: 'api_purchase_insert_coin', methods: ['POST'])]
     public function insertCoin(Request $request, InsertCoinUseCase $useCase): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-        if (!isset($data['coin'])) {
-            return new JsonResponse(['error' => 'Missing coin value'], Response::HTTP_BAD_REQUEST);
+        if (!isset($data['coin']) || !is_numeric($data['coin'])) {
+            return new JsonResponse(['error' => 'Missing or invalid coin value'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $coinValue = (float) $data['coin'];
+        $map = [
+            '0.05' => 5,
+            '0.10' => 10,
+            '0.25' => 25,
+            '1.00' => 100,
+        ];
+
+        // Usamos number_format para asegurar que la clave sea un string consistente
+        $key = number_format($coinValue, 2, '.', '');
+        if (!isset($map[$key])) {
+            return new JsonResponse(['error' => 'Invalid coin denomination'], Response::HTTP_BAD_REQUEST);
         }
 
         try {
-            $totalCredit = $useCase->execute((int) $data['coin']);
-            return new JsonResponse(['current_credit' => $totalCredit]);
+            $totalCredit = $useCase->execute($map[$key]);
+            return new JsonResponse(['current_credit' => number_format($totalCredit / 100, 2, '.', '')]);
         } catch (\InvalidArgumentException $e) {
             return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }
@@ -53,10 +67,13 @@ class PurchaseController extends AbstractController
 
         try {
             $result = $useCase->execute(new BuyProductCommand((string) $data['product']));
+            
+            $change = array_map(fn($coin) => number_format($coin / 100, 2, '.', ''), $result->changeCoins);
+            
             return new JsonResponse([
                 'status' => 'Success',
                 'delivered_product' => $result->productName,
-                'change' => $result->changeCoins
+                'change' => $change
             ]);
         } catch (InsufficientFundsException | ProductOutOfStockException | NotEnoughChangeException | \InvalidArgumentException $e) {
             return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -69,6 +86,8 @@ class PurchaseController extends AbstractController
     public function refund(RefundUseCase $useCase): JsonResponse
     {
         $coins = $useCase->execute();
-        return new JsonResponse(['refunded_coins' => $coins]);
+        $refundedCoins = array_map(fn($coin) => number_format($coin / 100, 2, '.', ''), $coins);
+        
+        return new JsonResponse(['refunded_coins' => $refundedCoins]);
     }
 }
